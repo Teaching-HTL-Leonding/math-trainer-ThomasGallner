@@ -1,0 +1,30 @@
+<a routerLink="/exercise"><button [disabled]="!mathTrainerService.oneOperatorSelected()">exercise</button></a>
+
+<h2>Settings</h2>
+
+<table>
+  <tbody>
+    <tr>
+      <td>Number of Digits:</td>
+      <td><input min=1 max=4 type="number" id="digitsAmount" name="digitsAmount"
+          [(ngModel)]="mathTrainerService.numOfDigits"></td>
+      <td>Number of questions:</td>
+      <td><input min=5 max=20 type="number" id="questionsAmount" name="questionsAmount"
+          [(ngModel)]="mathTrainerService.numOfQuestions"></td>
+    </tr>
+    <tr>
+      <td>Addition</td>
+      <td><input type="checkbox" id="addition" name="addition" [(ngModel)]="mathTrainerService.operatorsUsed['+']"></td>
+      <td>Subtraction</td>
+      <td><input type="checkbox" id="subtraction" name="subtraction"
+          [(ngModel)]="mathTrainerService.operatorsUsed['-']"></td>
+    </tr>
+    <tr>
+      <td>Multiplication</td>
+      <td><input type="checkbox" id="multiplication" name="multiplication"
+          [(ngModel)]="mathTrainerService.operatorsUsed['*']"></td>
+      <td>Division</td>
+      <td><input type="checkbox" id="division" name="division" [(ngModel)]="mathTrainerService.operatorsUsed['/']"></td>
+    </tr>
+  </tbody>
+</table>

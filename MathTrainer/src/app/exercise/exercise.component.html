@@ -1,0 +1,22 @@
+<a routerLink="/settings"><button>settings</button></a>
+
+<h2>Exercise</h2>
+
+<button (click)="mathTrainerService.generateExercise()">New Exercise</button>
+
+<table>
+  <tbody>
+    <tr *ngFor="let question of mathTrainerService.exercises">
+      <td>{{question.numA}}</td>
+      <td>{{question.operator}}</td>
+      <td>{{question.numB}}</td>
+      <td>=</td>
+      <input type="number" [(ngModel)]="question.actualResult">
+      <td [style]="getColorStyle(question.expectedResult, question.actualResult)"
+        [hidden]="!mathTrainerService.showResults">{{question.expectedResult}}</td>
+    </tr>
+  </tbody>
+</table>
+
+<button [hidden]="mathTrainerService.exercises.length === 0" [disabled]="!isExerciseValid()"
+  (click)="mathTrainerService.showResults=true">Done</button>
